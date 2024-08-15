@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Form</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="/styles/main.css">
+    </head>
+    <body>
+        <div class="container-form">
+            <form action="/" method="POST">
+                <input type="text" id="base" name="base_code" placeholder="Enter base currency code" required>
+                <br>
+                <input type="text" id="target" name="target_code" placeholder="Enter target currency code" required>
+                <br>
+                <input type="text" id="amount" name="amount" placeholder="Enter amount (optional)">
+                <br>
+                <button type="submit">Let's go! </button>
+            </form>
+        </div>
+        <div class="response-area">
+            <p>
+                <% if (locals.request) { %>
+                    <strong>Base currency: </strong>
+                    <%= baseCurrency %><br>
+                        <strong>Target currency: </strong>
+                    <%= targetCurrency %><br>
+                        <strong>Conversion rate: </strong>
+                    <%= conversionRate %><br>
+                        <% if (locals.baseAmount) { %>
+                            <strong>Base amount: </strong>
+                            <%= baseAmount %><br>
+                            <strong>Target amount: </strong>
+                            <%= targetAmount %><br>
+                        <% } %>
+                <% } else { %>
+                    <%= content %>
+                <% } %>
+            </p>
+        </div>
+    </body>
+</html>
